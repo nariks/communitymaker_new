@@ -8,4 +8,7 @@ class Profile < ActiveRecord::Base
   def full_name
     [first_name, last_name].compact.join(' ')
   end
+
+  extend FriendlyId
+  friendly_id :last_name, use: :slugged
 end

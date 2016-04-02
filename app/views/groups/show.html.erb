@@ -1,8 +1,12 @@
+<%= content_for :group_name, @group.name %>
+<%= content_for :group_banner, @group.banner %>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Group category:</strong>
-  <%= @group.group_category %>
+  <%= @group.group_category.name %>
 </p>
 
 <p>
@@ -17,12 +21,12 @@
 
 <p>
   <strong>Logo:</strong>
-  <%= @group.logo %>
+  <%= cl_image_tag @group.logo, width: '100px'  %>
 </p>
 
 <p>
   <strong>Banner:</strong>
-  <%= @group.banner %>
+  <%= cl_image_tag @group.banner, width: '100px' %>
 </p>
 
 <p>

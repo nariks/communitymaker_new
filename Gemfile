@@ -7,9 +7,12 @@ gem 'devise'
 gem 'simple_form'
 gem 'country_select'
 gem 'bootstrap'
+gem 'friendly_id'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
+
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'rolify'

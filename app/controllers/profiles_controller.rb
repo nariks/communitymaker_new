@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
-    @profile = Profile.new(profile_params)
+    @profile = Profile.friendly.new(profile_params)
     @profile.user = current_user
     respond_to do |format|
       if @profile.save
@@ -43,6 +43,8 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
     authorize! :update, @profile
+    Profile.friendly.name = nil
+    Profile.friendly.save
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -68,7 +70,7 @@ class ProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

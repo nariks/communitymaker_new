@@ -2,7 +2,7 @@
 
 <h1>Listing Groups</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Group category</th>
@@ -18,11 +18,12 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.group_category %></td>
+        <td><%= group.group_category.name %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
-        <td><%= group.logo %></td>
-        <td><%= group.banner %></td>
+        <td> <img src=<%= group.logo.present? ? group.logo : "http://placehold.it/20x15" %> alt="Card image cap" width="100%" height="auto">
+        </td>
+        <td><%= cl_image_tag group.banner, width:'100px' %></td>
         <td><%= group.owner_id %></td>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
