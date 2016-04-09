@@ -1,8 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<h1>Listing Events
 
-<table>
+  <% if params[:tag] %>
+    tagged with <%= params[:tag] %>
+  <% end %>
+</h1>
+
+<% @tags.each do |tag| %>
+    <%= link_to tag, events_path(tag: tag.name), class: 'btn btn-warning' %>
+<% end %>
+
+<table class="table">
   <thead>
     <tr>
       <th>User</th>
@@ -23,12 +32,12 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.user %></td>
+        <td><%= event.user.id %></td>
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
+        <td><%= event.start_time.strftime("%I:%M%p") %></td>
+        <td><%= event.end_time.strftime("%I:%M%p") %></td>
         <td><%= event.street %></td>
         <td><%= event.suburb %></td>
         <td><%= event.state %></td>

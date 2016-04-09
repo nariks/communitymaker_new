@@ -1,59 +1,95 @@
 <p id="notice"><%= notice %></p>
+<table class="table">
+  <tr>
+    <td>
+      <p>
+        <strong>User:</strong>
+        <%= @event.user.id %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @event.user %>
-</p>
+      <p>
+        <strong>Name:</strong>
+        <%= @event.name %>
+      </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @event.description %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+      <p>
+        <strong>Date:</strong>
+        <%= @event.date %>
+      </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
+      <p>
+        <strong>Start time:</strong>
+        <%= @event.start_time.strftime("%I:%M%p") %>
+      </p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
+      <p>
+        <strong>End time:</strong>
+        <%= @event.end_time.strftime("%I:%M%p") %>
+      </p>
 
-<p>
-  <strong>End time:</strong>
-  <%= @event.end_time %>
-</p>
+      <p>
+        <strong>Street:</strong>
+        <%= @event.street %>
+      </p>
 
-<p>
-  <strong>Street:</strong>
-  <%= @event.street %>
-</p>
+      <p>
+        <strong>Suburb:</strong>
+        <%= @event.suburb %>
+      </p>
 
-<p>
-  <strong>Suburb:</strong>
-  <%= @event.suburb %>
-</p>
+      <p>
+        <strong>State:</strong>
+        <%= @event.state %>
+      </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @event.state %>
-</p>
+      <p>
+        <strong>Postcode:</strong>
+        <%= @event.postcode %>
+      </p>
 
-<p>
-  <strong>Postcode:</strong>
-  <%= @event.postcode %>
-</p>
+      <p>
+        <strong>Country:</strong>
+        <%= @event.country %>
+      </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @event.country %>
-</p>
+      <p>
+        <strong>Groups:</strong>
+        <% @event.groups.each do |group| %>
+          <%= link_to group.name, group, class: "btn btn-warning" %>
+        <% end %>
+      </p>
+
+      <p>
+        <strong>Tags:</strong>
+        <% @event.tags.each do |tag| %>
+          <%= link_to tag, events_path(tag:tag.name) %>
+        <% end %>
+      </p>
+
+      <br>
+    </td>
+    
+
+    <td>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:S%7C<%= @event.latitude %>,<%= @event.longitude %>&key=", alt="">
+    </td>
+
+    
+
+      
+
+    </td>
+  </tr>
+</table>
+
+      
+
+  
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

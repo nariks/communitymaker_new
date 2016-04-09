@@ -8,6 +8,9 @@ gem 'simple_form'
 gem 'country_select'
 gem 'bootstrap'
 gem 'friendly_id'
+gem 'shotgun'
+gem 'geocoder'
+gem 'acts-as-taggable-on'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

@@ -43,8 +43,8 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
     authorize! :update, @profile
-    Profile.friendly.name = nil
-    Profile.friendly.save
+    # Profile.friendly.name = nil
+    # Profile.friendly.save
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
