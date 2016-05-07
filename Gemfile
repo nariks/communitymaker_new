@@ -11,6 +11,8 @@ gem 'friendly_id'
 gem 'shotgun'
 gem 'geocoder'
 gem 'acts-as-taggable-on'
+gem 'acts_as_votable'
+gem 'omniauth-github'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

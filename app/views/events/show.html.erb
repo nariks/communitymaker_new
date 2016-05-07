@@ -13,6 +13,32 @@
       </p>
 
       <p>
+
+      <% if current_user.voted_for? @event %>
+        <%= link_to "Unlike", unlike_event_path(@event), class: 'btn btn-success' %> <br>
+        Number of likes: <%= @event.get_likes.size %>
+          <%= @voted_stars %>
+        <% @voted_stars.each do |star| %>
+
+            <i class="fa fa-star"></i>
+          <% end %> 
+      <% else %>
+        <%= link_to "Like", like_event_path(@event), class: 'btn btn-success' %> <br>
+        Number of likes: <%= @event.get_likes.size %>
+        <% @event.find_votes_for(:vote_scope => 'rating').sum(:vote_weight) %>
+      <% end %>
+      </p>
+
+      <% if !current_user.voted_for? @event %>
+
+        <% @stars.each do |star| %>
+          <%= link_to rate_event_path(@event, stars: star) do %>
+            <i class="fa fa-star-o"></i>
+          <% end %> 
+        <% end %>
+      <% end %>
+
+      <p>
         <strong>Description:</strong>
         <%= @event.description %>
       </p>
